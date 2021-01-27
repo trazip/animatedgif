@@ -1,5 +1,5 @@
 <%= simple_form_for(@gif) do |f| %>
-<%= f.input :gif, as: :file %>
+<%= f.input :image, as: :file %>
 <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
 <%= f.submit %>
 <% end %>

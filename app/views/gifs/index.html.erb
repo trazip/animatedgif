@@ -1,0 +1,11 @@
+<div>
+  <% @gifs.each do |gif| %>
+    <%= link_to gif_path(gif)  do %>
+    <%= cl_image_tag gif.image.key %>
+    <p> Uploaded by <%= gif.user.name %></p>
+      <% gif.tag_list.each do |tag_name| %>
+          <%= link_to tag_name, root_path(tag: tag_name) %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
