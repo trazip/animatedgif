@@ -2,6 +2,9 @@
 @import "tailwindcss/components";
 
 /*! purgecss start ignore */
+.content{
+  height: calc(100vh - 4rem);
+}
 
 /*! purgecss end ignore */
 

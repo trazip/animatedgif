@@ -1,11 +1,17 @@
-<div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-4 lg:grid-cols-3 m-3">
   <% @gifs.each do |gif| %>
-    <%= link_to gif_path(gif)  do %>
-    <%= cl_image_tag gif.image.key %>
-    <p> Uploaded by <%= gif.user.name %></p>
-      <% gif.tag_list.each do |tag_name| %>
-          <%= link_to tag_name, root_path(tag: tag_name) %>
+    <div class="bg-white shadow rounded border border-gray-300 overflow-hidden">
+      <%= link_to gif_path(gif)  do %>
+        <%= cl_image_tag gif.image.key, class: "object-cover w-full" %>
       <% end %>
-    <% end %>
+      <div class="p-3">
+        <p class="text-sm text-gray-500 my-2"> Uploaded by <%= gif.user.name %></p>
+          <% gif.tag_list.each do |tag_name| %>
+            <div class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-<%=['green','blue', 'pink', 'purple', 'gray', 'yellow', 'indigo'].sample%>-400 text-white">
+              <%= link_to tag_name, root_path(tag: tag_name) %>
+            </div>
+          <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
