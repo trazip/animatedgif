@@ -21,6 +21,11 @@ class GifsController < ApplicationController
     redirect_to root_path
   end
 
+  def random
+    @gif = Gif.tagged_with(params[:tag]).order('RANDOM()').first
+    render :show
+  end
+
   private
 
   def gif_params

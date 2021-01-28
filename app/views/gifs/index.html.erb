@@ -10,7 +10,7 @@
         <p class="text-sm text-gray-500 my-2"> Uploaded by <%= gif.user.name %></p>
           <% gif.tag_list.each do |tag_name| %>
             <div class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-<%=['green','blue', 'pink', 'purple', 'gray', 'yellow', 'indigo'].sample%>-400 text-white">
-              <%= link_to tag_name, root_path(tag: tag_name) %>
+              <%= link_to tag_name, random_gif_path(tag: tag_name) %>
             </div>
           <% end %>
       </div>
