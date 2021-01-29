@@ -3,7 +3,7 @@ class GifsController < ApplicationController
   before_action :set_gif, only: [:show, :destroy]
 
   def index
-    @gifs = Gif.sorted
+    @gifs = Gif.includes(:tags, :user, image_attachment: :blob).sorted
   end
 
   def new
