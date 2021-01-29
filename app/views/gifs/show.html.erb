@@ -9,11 +9,21 @@
         </div>
         <div class="p-3">
         <p class="text-sm text-gray-500 my-2"> Uploaded by <%= @gif.user.name %></p>
-          <% @gif.tag_list.each do |tag_name| %>
-            <div class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-<%=['green','blue', 'pink', 'purple', 'gray', 'yellow', 'indigo'].sample%>-400 text-white">
-              <%= link_to tag_name, random_gif_path(tag: tag_name) %>
+          <div class="flex">
+            <div class="flex-grow">
+              <% @gif.tag_list.each do |tag_name| %>
+                <div class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-<%=['green','blue', 'pink', 'purple', 'gray', 'yellow', 'indigo'].sample%>-400 text-white">
+                  <%= link_to tag_name, random_gif_path(tag: tag_name) %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+            <% if user_signed_in? && current_user == @gif.user %>
+            <div>
+              <%= link_to 'Edit', edit_gif_path(@gif) %>
+              <%= link_to 'Delete', gif_path(@gif), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

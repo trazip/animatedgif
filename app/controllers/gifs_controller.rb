@@ -1,6 +1,6 @@
 class GifsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :random]
-  before_action :set_gif, only: :show
+  before_action :set_gif, only: [:show, :destroy]
 
   def index
     @gifs = Gif.all
@@ -24,6 +24,12 @@ class GifsController < ApplicationController
   def random
     @gif = Gif.tagged_with(params[:tag]).order('RANDOM()').first
     render :show
+  end
+
+  def destroy
+    @gif.destroy
+
+    redirect_to root_path
   end
 
   private
