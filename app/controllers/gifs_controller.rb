@@ -16,9 +16,11 @@ class GifsController < ApplicationController
   def create
     @gif = Gif.new(gif_params)
     @gif.user = current_user
-    @gif.save
-
-    redirect_to root_path
+    if @gif.save
+      redirect_to root_path
+    else
+      render new
+    end
   end
 
   def random

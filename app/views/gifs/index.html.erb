@@ -1,9 +1,9 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-4 lg:grid-cols-3 m-3">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:gap-4 lg:grid-cols-4 m-3">
   <% @gifs.each do |gif| %>
     <div class="bg-white shadow rounded border border-gray-300 overflow-hidden">
       <%= link_to gif_path(gif)  do %>
         <% if gif.image.attached? %>
-          <%= cl_image_tag gif.image.key, class: "object-cover h-80 w-full" %>
+          <%= cl_image_tag gif.image.key, class: "object-cover h-56 w-full" %>
         <% end %>
       <% end %>
       <div class="p-3">
