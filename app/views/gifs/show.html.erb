@@ -8,7 +8,7 @@
           <button data-action="clipboard#copy" data-clipboard-target="button" class="bg-yellow-500 focus:bg-yellow-600 text-white px-3 py-2 rounded-r-lg text-sm font-medium focus:outline-none">Copy</button>
         </div>
         <div class="p-3">
-        <p class="text-sm text-gray-500 my-2"> Uploaded by <%= @gif.user.name %></p>
+        <p class="text-sm text-gray-500 my-2"> Uploaded by <%= link_to @gif.user.name, user_path(@gif.user) %></p>
           <div class="flex">
             <div class="flex-grow">
               <% @gif.tag_list.each do |tag_name| %>
