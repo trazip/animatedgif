@@ -1,5 +1,5 @@
 class GifsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show, :random]
   before_action :set_gif, only: :show
 
   def index
