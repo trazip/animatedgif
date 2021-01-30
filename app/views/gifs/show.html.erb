@@ -2,7 +2,9 @@
   <div class="flex justify-center items-center content">
     <div class="shadow sm:rounded-md sm:overflow-hidden w-3/6">
       <div class="px-4 py-5 bg-white space-y-6 sm:p-6 w-full">
-        <%= cl_image_tag @gif.image.key, class: "object-cover max-h-96 w-full" %>
+        <% if @gif.image.attached? %>
+          <%= cl_image_tag @gif.image.key, class: "object-cover max-h-96 w-full" %>
+        <% end %>
         <div class="w-full flex" data-controller="clipboard">
           <input data-clipboard-target="source" readonly type="text" value="<%= cl_image_path @gif.image.key %>" class="bg-gray-800 appearance-none border-2 border-gray-800 rounded-l-lg w-full py-2 px-4 text-white leading-tight text-sm focus:border-yellow-500 focus:text-white focus:outline-none">
           <button data-action="clipboard#copy" data-clipboard-target="button" class="bg-yellow-500 focus:bg-yellow-600 text-white px-3 py-2 rounded-r-lg text-sm font-medium focus:outline-none">Copy</button>
