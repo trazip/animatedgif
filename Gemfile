@@ -34,6 +34,7 @@ gem 'devise'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
 gem 'pagy', '~> 3.7', '>= 3.7.3'
 gem 'simple_form'
+gem 'gravatar_image_tag'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
