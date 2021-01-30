@@ -20,10 +20,10 @@
               <% end %>
             </div>
             <% if user_signed_in? && current_user == @gif.user %>
-            <div>
-              <%= link_to 'Edit', edit_gif_path(@gif) %>
-              <%= link_to 'Delete', gif_path(@gif), method: :delete, data: { confirm: "Are you sure?" } %>
-            </div>
+              <div>
+                <%= link_to 'Edit', edit_gif_path(@gif) %>
+                <%= link_to 'Delete', gif_path(@gif), method: :delete, data: { confirm: "Are you sure?" } %>
+              </div>
             <% end %>
           </div>
         </div>

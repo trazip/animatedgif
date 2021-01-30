@@ -1,6 +1,6 @@
 class GifsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :random]
-  before_action :set_gif, only: [:show, :destroy]
+  before_action :set_gif, only: [:show, :edit, :update, :destroy]
 
   def index
     @gifs = Gif.includes(:tags, :user, image_attachment: :blob).sorted
@@ -11,6 +11,15 @@ class GifsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @gif.update(gif_params)
+
+    redirect_to root_path
   end
 
   def create
@@ -38,7 +47,9 @@ class GifsController < ApplicationController
   private
 
   def gif_params
-    params.require(:gif).permit(:image, :tag_list)
+    permitted = [:tag_list]
+    permitted += [:image] if action_name == "create"
+    params.require(:gif).permit(*permitted)
   end
 
   def set_gif
